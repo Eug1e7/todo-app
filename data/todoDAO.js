@@ -1,19 +1,27 @@
 // data/todoDAO.js
 
-let tasks = ["Buy groceries", "Clean the house", "Pay bills"];
+const pool = require('./db');  // この行を追加
 
 module.exports = {
-  getAll: () => tasks,
-  getById: (id) => tasks[id],
-  add: (task) => {
-    tasks.push(task);
-    return task;
+  getAll: async () => {
+    const { rows } = await pool.query('SELECT * FROM todos');  // この行を更新
+    return rows;
   },
-  update: (id, task) => {
-    tasks[id] = task;
-    return task;
+  getById: async (id) => {
+    const { rows } = await pool.query('SELECT * FROM todos WHERE id = $1', [id]);  // この行を更新
+    return rows[0];
   },
-  delete: (id) => {
-    return tasks.splice(id, 1);
+  add: async (task) => {
+    const { rows } = await pool.query('INSERT INTO todos (task) VALUES ($1) RETURNING *', [task]);  // この行を更新
+    return rows[0];
   },
+  update: async (id, task) => {
+    const { rows } = await pool.query('UPDATE todos SET task = $1 WHERE id = $2 RETURNING *', [task, id]);  // この行を更新
+    return rows[0];
+  },
+  delete: async (id) => {
+    const { rows } = await pool.query('DELETE FROM todos WHERE id = $1 RETURNING *', [id]);  // この行を更新
+    return rows[0];
+  }
 };
+
