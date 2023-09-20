@@ -1,9 +1,13 @@
-const express = require('express');
+// index.js
+
+const express = require("express");
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
+const tasks = ["Buy groceries", "Clean the house", "Pay bills"];
+
+app.get("/api/todos", (req, res) => {
+  res.json(tasks);
 });
 
 app.listen(port, () => {
