@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html lang="'jp">
+<html lang="jp">
   <head>
+    <!-- タイトルの設定 -->
     <title>Simple ToDo List</title>
+    <!-- スタイルシートのリンク -->
     <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
   <body>
+    <!-- タイトルヘッダー -->
     <h1>My ToDo List</h1>
+    
+    <!-- ToDoリストを表示する領域 -->
     <div id="todoList"></div>
+    
+    <!-- 新しいタスクを入力するテキストボックス -->
     <input type="text" id="newTask" placeholder="New Task" />
+    
+    <!-- タスク追加ボタン -->
     <button onclick="handleAddTask()">Add</button>
+    
+    <!-- JavaScriptの読み込み -->
     <script src="script.js"></script>
   </body>
 </html>

@@ -1,10 +1,36 @@
+/* ページ全体の基本スタイル */
+body {
+    font-family: Arial, sans-serif; /* フォントの設定 */
+    margin: 40px; /* ページの外側の余白 */
+    background-color: #f4f4f4; /* 背景色の設定 */
+}
+
+/* タイトルのスタイル */
+h1 {
+    color: #333; /* 文字色の設定 */
+    text-align: center; /* 中央揃え */
+}
+
+/* ToDoリストのスタイル */
 #todoList {
-    margin-bottom: 20px;
-  }
-  
-  .todoItem {
-    margin: 5px;
-    padding: 10px;
-    border: 1px solid #ccc;
-  }
-  
+    margin: 20px auto 20px auto; /* 上: 20px, 右: auto, 下: 20px, 左: auto */
+    max-width: 600px;
+}
+
+
+/* 各ToDoアイテムのスタイル */
+.todoItem {
+    margin: 5px 0; /* 上下の余白 */
+    padding: 10px; /* 内側の余白 */
+    border: 1px solid #ccc; /* 境界線の設定 */
+    background-color: #fff; /* 背景色の設定 */
+    border-radius: 5px; /* 角の丸み */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 影の設定 */
+}
+
+/* 新しいタスクの入力ボックスとボタンのスタイル */
+input[type="text"], button {
+    padding: 10px; /* 内側の余白 */
+    margin: 5px; /* 外側の余白 */
+    font-size: 16px; /* フォントサイズの設定 */
+}
