@@ -22,14 +22,13 @@ async function addTask(task) {
 async function renderTasks() {
   const tasks = await fetchTasks();
   const list = document.getElementById("todoList");
-  list.innerHTML = "";
+  list.innerHTML = ""; // 既存のタスクをクリア
   for (const task of tasks) {
     const item = document.createElement("div");
     item.className = "todoItem";
-    item.innerText = task;
+    item.innerText = task.task; // taskオブジェクトの中のtaskプロパティを使用
     list.appendChild(item);
   }
-
 }
 
 // タスク追加ボタンがクリックされたときの処理
