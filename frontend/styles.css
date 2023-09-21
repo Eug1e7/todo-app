@@ -1,10 +1,11 @@
+/* ToDoリストのスタイル */
 #todoList {
     margin-bottom: 20px;
-  }
-  
-  .todoItem {
+}
+
+/* 各ToDoアイテムのスタイル */
+.todoItem {
     margin: 5px;
     padding: 10px;
     border: 1px solid #ccc;
-  }
-  
+}
