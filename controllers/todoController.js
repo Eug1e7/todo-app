@@ -3,6 +3,12 @@
 const todoService = require("../services/todoService");
 
 module.exports = {
+  // 全てのタスクを取得
+  getAll: async (req, res) => {
+    const tasks = await todoService.getAllTasks();
+    res.json(tasks);
+  },
+
   // 指定されたIDのタスクを取得
   getById: async (req, res) => {
     const id = parseInt(req.params.id, 10);
