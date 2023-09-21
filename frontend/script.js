@@ -37,9 +37,9 @@ async function handleAddTask() {
   const newTask = newTaskInput.value;
   if (newTask) {
     await addTask(newTask);
-    newTaskInput.value = "";
     await renderTasks();
   }
+  newTaskInput.value = ""; // タスクの追加が完了したら、入力欄をクリア
 }
 
 // 初期表示時にタスクを画面に表示
