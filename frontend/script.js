@@ -18,15 +18,38 @@ async function addTask(task) {
   return data;
 }
 
+// サーバーから指定されたIDのタスクを削除する関数
+async function deleteTask(id) {
+  const response = await fetch(`http://localhost:3000/api/todos/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await response.json();
+  return data;
+}
+
 // タスクを画面に表示する関数
 async function renderTasks() {
   const tasks = await fetchTasks();
   const list = document.getElementById("todoList");
   list.innerHTML = ""; // 既存のタスクをクリア
+
   for (const task of tasks) {
     const item = document.createElement("div");
     item.className = "todoItem";
     item.innerText = task.task; // taskオブジェクトの中のtaskプロパティを使用
+
+    // 削除ボタンを作成
+    const deleteButton = document.createElement("button");
+    deleteButton.innerText = "Delete";
+    deleteButton.onclick = async () => {
+      await deleteTask(task.id); // タスクを削除
+      await renderTasks(); // タスクリストを再描画
+    };
+
+    item.appendChild(deleteButton); // 削除ボタンをタスクアイテムに追加
     list.appendChild(item);
   }
 }
