@@ -18,6 +18,8 @@ spec:
         env:
         - name: POSTGRES_PASSWORD
           value: "2525"
+        - name: PGPORT
+          value: "6160"
         ports:
         - containerPort: 6160
 
