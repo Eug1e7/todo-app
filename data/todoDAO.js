@@ -1,6 +1,7 @@
 // data/todoDAO.js
 
 const pool = require("./db");
+const { blockchain, createNewBlock } = require('./blockchain'); // blockchain.jsをインポート
 
 module.exports = {
   // 全てのタスクをデータベースから取得する関数
@@ -28,6 +29,13 @@ module.exports = {
   // 新しいタスクをデータベースに追加する関数
   add: async (task) => {
     try {
+      // ブロックチェーンに新しいブロックを追加
+      const previousBlock = blockchain[blockchain.length - 1];
+      const newBlock = createNewBlock(previousBlock, task);
+      blockchain.push(newBlock);
+
+      // ここでブロックの情報をデータベースにも保存することができます
+
       const { rows } = await pool.query("INSERT INTO todos (task) VALUES ($1) RETURNING *", [task]);
       return rows[0];
     } catch (error) {
